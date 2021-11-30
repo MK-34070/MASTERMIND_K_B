@@ -36,21 +36,21 @@ public class Grille_principale {
         
         for (int line =0; line<11; line++){
             for (int col=0; col<3 ; col++){
-               // Cellules
+               Joueur_combi[line][col]=null;
             }
         }
     }
 
     /**
      *cette méthode permet de créer la combinaison aléatoire de l'ordinateur avec 4 couleurs aléatoires parmi les 6 proposées
-     * 
+     * @return    *on retourne le tableau aléatoire qui a été généré 
      */
     public String[]  combinaisonaléatoire(){
         for (int i=0; i<3; i++){
             int couleur=pions.nextInt(5);
             tabOrdi[i]=tabCouleur[couleur];
         }
-        System.out.println(tabOrdi);
+        //System.out.println(tabOrdi);
         return tabOrdi;
     }
 }
