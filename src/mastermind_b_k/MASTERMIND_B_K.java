@@ -4,6 +4,8 @@
  */
 package mastermind_b_k;
 
+import java.util.Random;
+
 /**
  *
  * @author mario
@@ -14,7 +16,11 @@ public class MASTERMIND_B_K {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-    }
+        //Grille_principale tab;
+       // tab=combinaisonaléatoire();
+        
+       //String [] tab = Grille_principale.combinaisonaléatoire();
+       
+     }
     
 }
