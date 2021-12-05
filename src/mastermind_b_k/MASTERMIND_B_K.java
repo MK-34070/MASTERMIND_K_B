@@ -20,6 +20,7 @@ public class MASTERMIND_B_K {
        // tab=combinaisonaléatoire();
         
        //String [] tab = Grille_principale.combinaisonaléatoire();
+      
        
      }
     

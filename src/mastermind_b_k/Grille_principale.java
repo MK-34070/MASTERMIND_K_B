@@ -4,6 +4,7 @@
  */
 package mastermind_b_k;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -19,6 +20,12 @@ public class Grille_principale {
     String[][] Joueur_combi= new String[12][4];
     // création du tableau de 6 couleur:
     String [] tabCouleur=new String[6];
+    ArrayList<String> Jeu_Joueur = new ArrayList<String>();
+    ArrayList<Boolean> Verif = new ArrayList<Boolean>();
+    ArrayList<Integer> Indice = new ArrayList<Integer>();
+    
+    
+    
     
     
     
@@ -52,5 +59,17 @@ public class Grille_principale {
         }
         //System.out.println(tabOrdi);
         return tabOrdi;
+    }
+    
+    public void creation_Jeu_Joueur(int nbrecolor){
+        
+        Jeu_Joueur.add(tabCouleur[nbrecolor]);
+        
+    }
+
+    public void affichage_Jeu_Joueur(String tabJoueur){
+        //for (int k=0;)
+        System.out.println("||");
+        
     }
 }
