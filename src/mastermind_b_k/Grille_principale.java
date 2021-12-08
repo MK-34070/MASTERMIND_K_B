@@ -72,4 +72,19 @@ public class Grille_principale {
         System.out.println("||");
         
     }
+    
+    public void analyse_Jeu_Joueur ( int line ){//String[] tabJoueur ,
+        // premiere boucle d'analyse concernant si bonne couleur + bon emplacement
+        for (int i=0 ; i<4 ; i++){
+            
+            if (Jeu_Joueur.get(i*line)==tabOrdi[i]){
+                Verif.add(true);
+                Indice.add(0);
+                
+            }
+            if (Jeu_Joueur.contains(tabOrdi[i])){
+                
+            }
+        }
+    }
 }
