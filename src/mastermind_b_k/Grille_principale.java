@@ -75,16 +75,33 @@ public class Grille_principale {
     
     public void analyse_Jeu_Joueur ( int line ){//String[] tabJoueur ,
         // premiere boucle d'analyse concernant si bonne couleur + bon emplacement
-        for (int i=0 ; i<4 ; i++){
+        int col=line*4;
+        for (int i=0 ; i<4 ; i++ ){ 
             
-            if (Jeu_Joueur.get(i*line)==tabOrdi[i]){
+            if (Jeu_Joueur.get(col)==tabOrdi[i]){  // attention où on se situe dnas le tableau
+                // on prend line*4 
+                // exemple : si line=0 --> 0*4=0 donc Jeu_Joueur.get(0)==tabOrdi[0]
+                //           si line=1 --> 1*4=4 donc Jeu_Joueur.get(4)==tabOrdi[0]
+                // jusqu'à la 12 ieme ligne
                 Verif.add(true);
-                Indice.add(0);
-                
+                Indice.add(0);   
             }
-            if (Jeu_Joueur.contains(tabOrdi[i])){
-                
-            }
+            
+            col++;
         }
-    }
+        //deuxième boucle pour déterminer si on place des pions si seulement présence d'une bonne couleur
+        for (int k=0 ; k<4 ; k++){
+            if (Verif.get(col)!=true){
+               if (Jeu_Joueur.get(col)==(tabOrdi[k])){  // si on fait ca cela analyse tout le tableau array --> donc pas possible
+                   Indice.add(1);
+                   col++;
+                } 
+            }
+            
+        }
+        
+    }// test 1 : si tabOrdi=[R,Y,B,G]
+       // pour k=0 , line =0
+        // Verif.get(0)==false
+        // Dans  
 }
