@@ -75,6 +75,9 @@ public class Grille_principale {
     
     public void analyse_Jeu_Joueur ( int line ){//String[] tabJoueur ,
         // premiere boucle d'analyse concernant si bonne couleur + bon emplacement
+        // a chaque passage de niveau(nouvel ligne) clear le tableau d'indice et même tout les atres ArrayList: --> l'affichage restera;
+        // on n'a pas besoin de stocker les valeurs des ArrayList
+        //clear ArrayLists
         int col=line*4;
         for (int i=0 ; i<4 ; i++ ){ 
             
@@ -93,7 +96,10 @@ public class Grille_principale {
         for (int k=0 ; k<4 ; k++){
             if (Verif.get(col)!=true){
                if (Jeu_Joueur.get(col)==(tabOrdi[k])){  // si on fait ca cela analyse tout le tableau array --> donc pas possible
+                   //test: si col=line*4=4
+                   //Jeu_Joueur.get(4)==(tabOrdi[0]
                    Indice.add(1);
+                   Verif.add(true);
                    col++;
                 } 
             }
