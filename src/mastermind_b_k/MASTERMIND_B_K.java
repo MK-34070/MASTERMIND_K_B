@@ -4,6 +4,7 @@
  */
 package mastermind_b_k;
 
+import java.util.LinkedList;
 import java.util.Random;
 
 /**
@@ -20,6 +21,9 @@ public class MASTERMIND_B_K {
        // tab=combinaisonaléatoire();
         
        //String [] tab = Grille_principale.combinaisonaléatoire();
+      Partie JEU1= new Partie();
+      JEU1.choixcoul();
+      
       
        
      }

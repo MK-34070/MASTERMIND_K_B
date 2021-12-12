@@ -5,6 +5,7 @@
 package mastermind_b_k;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -17,7 +18,7 @@ public class Grille_principale {
     // création du tableau de l'ordi
     String [] tabOrdi= new String[4];
      Random pions= new Random();
-    String[][] Joueur_combi= new String[12][4];
+    //String[][] Joueur_combi= new String[12][4];
     // création du tableau de 6 couleur:
     String [] tabCouleur=new String[6];
     ArrayList<String> Jeu_Joueur = new ArrayList<String>();
@@ -41,11 +42,13 @@ public class Grille_principale {
         tabCouleur[4]="O";// orange
         tabCouleur[5]="B";// blue
         
-        for (int line =0; line<11; line++){
-            for (int col=0; col<3 ; col++){
-               Joueur_combi[line][col]=null;
-            }
-        }
+       for (int i =0; i<41; i++){
+            
+            Verif.add(false);
+            Indice.add(null);
+       }
+            
+        
     }
 
     /**
@@ -53,17 +56,18 @@ public class Grille_principale {
      * @return    *on retourne le tableau aléatoire qui a été généré 
      */
     public String[]  combinaisonaléatoire(){
-        for (int i=0; i<3; i++){
+        for (int i=0; i<4; i++){
             int couleur=pions.nextInt(5);
             tabOrdi[i]=tabCouleur[couleur];
         }
-        //System.out.println(tabOrdi);
+        System.out.println(Arrays.toString(tabOrdi));
         return tabOrdi;
     }
     
-    public void creation_Jeu_Joueur(int nbrecolor){
+    public String creation_Jeu_Joueur(int nbrecolor){
         
         Jeu_Joueur.add(tabCouleur[nbrecolor]);
+        return tabCouleur[nbrecolor];
         
     }
 
@@ -73,39 +77,69 @@ public class Grille_principale {
         
     }
     
-    public void analyse_Jeu_Joueur ( int line ){//String[] tabJoueur ,
+    /**
+     *
+     * @param 
+     * @return
+     */
+    public ArrayList<Integer> analyse_Jeu_Joueur ( ){//int line ){//String[] tabJoueur ,
         // premiere boucle d'analyse concernant si bonne couleur + bon emplacement
-        // a chaque passage de niveau(nouvel ligne) clear le tableau d'indice et même tout les atres ArrayList: --> l'affichage restera;
-        // on n'a pas besoin de stocker les valeurs des ArrayList
+        // a chaque passage de niveau(nouvel ligne) clear le tableau d'indice et même tout les autres ArrayList: --> l'affichage restera;
+        // on n'a pas besoin de stocker les valeurs des ArrayList(sauf pour réafficher a chaque fois les niveaux du joueur
         //clear ArrayLists
-        int col=line*4;
+        //int col=line*4;
+        int compteur=0;
         for (int i=0 ; i<4 ; i++ ){ 
             
-            if (Jeu_Joueur.get(col)==tabOrdi[i]){  // attention où on se situe dnas le tableau
-                // on prend line*4 
+            if (Jeu_Joueur.get(i)==tabOrdi[i]){  if (Verif.get(i)!=true ) {
+                // attention où on se situe dnas le tableau
+                // on prend line*4
                 // exemple : si line=0 --> 0*4=0 donc Jeu_Joueur.get(0)==tabOrdi[0]
                 //           si line=1 --> 1*4=4 donc Jeu_Joueur.get(4)==tabOrdi[0]
                 // jusqu'à la 12 ieme ligne
-                Verif.add(true);
-                Indice.add(0);   
+                Verif.set(i,true);
+                Indice.set(i,0);   
+                compteur+=1;
+                }
             }
             
-            col++;
+            //col++;
+        }
+        if (compteur==4){
+            System.out.println("Vous avez Gagné!!!");
+            System.out.println(Indice);
+            System.out.println(Verif);
+            return Indice;
         }
         //deuxième boucle pour déterminer si on place des pions si seulement présence d'une bonne couleur
+        
         for (int k=0 ; k<4 ; k++){
-            if (Verif.get(col)!=true){
-               if (Jeu_Joueur.get(col)==(tabOrdi[k])){  // si on fait ca cela analyse tout le tableau array --> donc pas possible
-                   //test: si col=line*4=4
-                   //Jeu_Joueur.get(4)==(tabOrdi[0]
-                   Indice.add(1);
-                   Verif.add(true);
-                   col++;
-                } 
+            if (Verif.get(k)!=true){
+               for (int j=0;j<4;j++){
+                if (Jeu_Joueur.get(k)==(tabOrdi[j])){  // si on fait ca cela analyse tout le tableau array --> donc pas possible
+                    //test: si col=line*4=4
+                    //Jeu_Joueur.get(4)==(tabOrdi[0])
+                    if (Verif.get(k)!=true){
+                        Indice.set(k,1);
+                        Verif.set(k,true);
+                    }
+                    //col++;
+                 } 
+                }
             }
+            //utilisation sublist
+            /* LinkedList<Integer> num=new LinkedList<Integer>();
+      for (int i=0 ;i<10;i++){
+       num.add(i);   
+      }
+      num.subList(3, 7);
+      System.out.print(num.subList(3, 7));
+*/
             
         }
+
         
+      return Indice;  
     }// test 1 : si tabOrdi=[R,Y,B,G]
        // pour k=0 , line =0
         // Verif.get(0)==false
