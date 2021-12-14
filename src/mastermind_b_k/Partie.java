@@ -38,9 +38,12 @@ public class Partie {
             
             Jeu_Joueur.add(obj1.creation_Jeu_Joueur(choixcolor));
         }
-        System.out.print(Jeu_Joueur);
+        //Imaginons on fait un test que en utilisant le premier niveau(donc première ligne) alors :
+        int line=0;
+        System.out.print(Jeu_Joueur.subList(line , line+4));
+        //Ci dessus on print que les éléments du Jeu_Joueur du niveau auquel on se situe (ici niveau1 donc ligne 0)
 
-        obj1.analyse_Jeu_Joueur();
+        obj1.analyse_Jeu_Joueur(line);
         // a cet emplacement nécessaire de rajouter une fonction qui peremet de modifier l'emplacement des pions( aprés la boucle for)
         
         //lancement de la grille indice --> analyse de nos différents pions qu'on a placé
