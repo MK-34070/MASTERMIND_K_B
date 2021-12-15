@@ -167,8 +167,9 @@ public class Grille_principale {
     int colencours=0; // on enregistre la ligne finale dans une variable pour ensuite reparcourir a +4
     for(int indtab=0 ; indtab < colencours+4 ; indtab++){ // on parcourt de 0 à +4 // double boucle imbriquée 1) qui parcourt chaque case de la liste alétoire de l'ordi 
         for(int indjou=0 ; indjou < colencours+4 ; indjou++){
-       if ( tabOrdi[indtab] == Jeu_Joueur[indjou]){ // marche pas prcq jeu joueur pas un tab ///2) on verifie si il y a une couleur similaire 
-           if (indtab==indjou){// si couleur similaire on verif l'indice / on compare les indices (indice de la case en cours de l'ordi et indice en cours du joueur 
+       if (  Jeu_Joueur.contains(tabOrdi[indtab]){  ///2) on verifie si il y a une couleur similaire
+          int indjoueur = Jeu_Joueur.IndexOf(tabOrdi[indtab]);
+           if (indtab==indjoueur){// si couleur similaire on verif l'indice / on compare les indices (indice de la case en cours de l'ordi et indice en cours du joueur 
               Indice.add(0) ; // si indice le même on rentre un 0 dans l'array des indices 
            }else {
                Indice.add(1) ;// sinon on rentre juste un 1// si identique boom on rajoute un 1 u tableau des indices
