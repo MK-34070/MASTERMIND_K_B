@@ -163,4 +163,21 @@ public class Grille_principale {
         return null;
         
     }
+    // idée pour les boucles 
+    // on parcourt de 0 à +4 
+    // on enregistre la ligne finale dans une variable pour ensuite reparcourir a +4
+    // double boucle imbriquée 1) qui parcourt chaque case de la liste alétoire de l'ordi 
+            ///2) on verifie si il y a une couleur similaire 
+                        // si couleur similaire on verif l'indice 
+                           // si indice le même on rentre un 0 dans l'array des indices 
+                            // sinon on rentre juste un 0
+                                // on compare les indices (indice de la case en cours de l'ordi et indice en cours du joueur 
+                                    // si identique boom on rajoute un 1 u tableau des indices
+                        // si pas même couleur on passe à la case d'apres 
+                            // et tableau d'indice reste null
+    // une fois la verif de la première case faite la valeur passe à true
+    // on peut rajouter une boucle qui verifie que toutes les cases de l'ordi on bien été comparée
+   
+    // on renvoit le tableau des indices 
 }
+
