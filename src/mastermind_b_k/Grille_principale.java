@@ -25,6 +25,7 @@ public class Grille_principale {
     ArrayList<Boolean> Verif = new ArrayList<>();
     ArrayList<Integer> Indice = new ArrayList<>();
     ArrayList<String> JJ = new ArrayList<>();
+    String []tabCoul2=new String[5];  
 
     // création du constructeur de tout le tableau
     //avec différentes cellules qu'on aura besoin de déterminer pour les différents indices des colonnes
@@ -35,12 +36,13 @@ public class Grille_principale {
         tabCouleur[3] = "Y";// jaune
         tabCouleur[4] = "O";// orange
         tabCouleur[5] = "B";// blue
-
-        for (int i = 0; i < 41; i++) {
+        tabCoul2=tabCouleur;
+       /* for (int i = 0; i < 41; i++) {
 
             Verif.add(false);
             Indice.add(null);
         }
+        */
 
     }
 
@@ -83,6 +85,7 @@ public class Grille_principale {
             // a chaque passage de niveau(nouvel ligne) clear le tableau d'indice et même tout les autres ArrayList: --> l'affichage restera;
             // on n'a pas besoin de stocker les valeurs des ArrayList(sauf pour réafficher a chaque fois les niveaux du joueur
             //clear ArrayLists
+            /*
             int col = line * 4;
             int compteur = 0;
             for (int i = 0; i < 4; i++) {
@@ -155,39 +158,50 @@ public class Grille_principale {
       System.out.print(num.subList(3, 7));
                  */
 
-                return Indice;
-            }// test 1 : si tabOrdi=[R,Y,B,G]
+             //   return Indice;
+            // test 1 : si tabOrdi=[R,Y,B,G]
             // pour k=0 , line =0
             // Verif.get(0)==false
             // Dans  
-        return null;
+      //  return null;
         
-        
-    /*    // idée pour les boucles
+  
+        // idée pour les boucles
     int colencours=0; // on enregistre la ligne finale dans une variable pour ensuite reparcourir a +4
     for(int indtab=0 ; indtab < colencours+4 ; indtab++){ // on parcourt de 0 à +4 // double boucle imbriquée 1) qui parcourt chaque case de la liste alétoire de l'ordi 
-        for(int indjou=0 ; indjou < colencours+4 ; indjou++){
-       if (  Jeu_Joueur.contains(tabOrdi[indtab]){  ///2) on verifie si il y a une couleur similaire
-          int indjoueur = Jeu_Joueur.IndexOf(tabOrdi[indtab]);
+   //     for(int indjou=0 ; indjou < colencours+4 ; indjou++){
+       if ( Jeu_Joueur.contains(tabOrdi[indtab])){  ///2) on verifie si il y a une couleur similaire
+          int indjoueur = Jeu_Joueur.indexOf(tabOrdi[indtab]);// index of prend le premier indice ouu il y a l'element qu'on veut 
            if (indtab==indjoueur){// si couleur similaire on verif l'indice / on compare les indices (indice de la case en cours de l'ordi et indice en cours du joueur 
               Indice.add(0) ; // si indice le même on rentre un 0 dans l'array des indices 
            }else {
-               Indice.add(1) ;// sinon on rentre juste un 1// si identique boom on rajoute un 1 u tableau des indices
+                for (int i=0 ; i<6; i++){
+                    if(tabCoul2[i]==tabOrdi[indtab]&& tabCoul2[i]!="NOP"){
+                            tabCoul2[i]="NOP";
+                            Indice.add(1) ;// sinon on rentre juste un 1// si identique boom on rajoute un 1 u tableau des indices
+                            break;
+                    }
+                }
            }
        }else {
+            System.out.println("Le tableau indice de la forme/n" + Indice);
+            System.out.println(Verif);
+                
            continue;// si pas même couleur on passe à la case d'apres 
            // et tableau d'indice reste null
-       }
+     //  }
            
        }
         Verif.add(true);// une fois la verif de la première case faite la valeur passe à true
 } colencours+=4;
-    
+    System.out.println("Le tableau indice de la forme/n" + Indice);
+    System.out.println(Verif);
+                
     return Indice;// on renvoit le tableau des indices 
    // on peut rajouter une boucle qui verifie que toutes les cases de l'ordi on bien été comparée        
                         
                           
-      */                      
+                          
                                 
                                     
                         
