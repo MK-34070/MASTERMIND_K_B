@@ -37,12 +37,12 @@ public class Grille_principale {
         tabCouleur[4] = "O";// orange
         tabCouleur[5] = "B";// blue
         tabCoul2=tabCouleur;
-       /* for (int i = 0; i < 41; i++) {
+        for (int i = 0; i < 42; i++) {
 
             Verif.add(false);
             Indice.add(null);
         }
-        */
+        
 
     }
 
@@ -165,37 +165,46 @@ public class Grille_principale {
             // Dans  
       //  return null;
         
-  
+        
         // idée pour les boucles
-    int colencours=0; // on enregistre la ligne finale dans une variable pour ensuite reparcourir a +4
-    for(int indtab=0 ; indtab < colencours+4 ; indtab++){ // on parcourt de 0 à +4 // double boucle imbriquée 1) qui parcourt chaque case de la liste alétoire de l'ordi 
-   //     for(int indjou=0 ; indjou < colencours+4 ; indjou++){
-       if ( Jeu_Joueur.contains(tabOrdi[indtab])){  ///2) on verifie si il y a une couleur similaire
-          int indjoueur = Jeu_Joueur.indexOf(tabOrdi[indtab]);// index of prend le premier indice ouu il y a l'element qu'on veut 
-           if (indtab==indjoueur){// si couleur similaire on verif l'indice / on compare les indices (indice de la case en cours de l'ordi et indice en cours du joueur 
-              Indice.add(0) ; // si indice le même on rentre un 0 dans l'array des indices 
-           }else {
-                for (int i=0 ; i<6; i++){
-                    if(tabCoul2[i]==tabOrdi[indtab]&& tabCoul2[i]!="NOP"){
-                            tabCoul2[i]="NOP";
-                            Indice.add(1) ;// sinon on rentre juste un 1// si identique boom on rajoute un 1 u tableau des indices
+        int colencours = line * 4;// on enregistre la ligne finale dans une variable pour ensuite reparcourir a +4
+        for (int indtabOrdi = 0; indtabOrdi < 4; indtabOrdi++) { // on parcourt de 0 à +4 // double boucle imbriquée 1) qui parcourt chaque case de la liste alétoire de l'ordi 
+            //     for(int indjou=0 ; indjou < colencours+4 ; indjou++){
+            if (Jeu_Joueur.contains(tabOrdi[indtabOrdi])) {  ///2) on verifie si il y a une couleur similaire
+                int indjoueur = Jeu_Joueur.indexOf(tabOrdi[indtabOrdi]);// index of prend le premier indice ouu il y a l'element qu'on veut 
+                if (indtabOrdi == indjoueur) {// si couleur similaire on verif l'indice / on compare les indices (indice de la case en cours de l'ordi et indice en cours du joueur 
+                    Indice.add(0); // si indice le même on rentre un 0 dans l'array des indices 
+                    int tour = Jeu_Joueur.indexOf(false);
+                    Verif.set(tour, true);
+                    //Verif.add(true);// une fois la verif de la première case faite la valeur passe à true
+                } else {
+                    for (int i = 0; i < 6; i++) {
+                        if (tabCoul2[i] == tabOrdi[indtabOrdi] && tabCoul2[i] != "NOP") {
+                            tabCoul2[i] = "NOP";
+                            Indice.add(1);// sinon on rentre juste un 1// si identique boom on rajoute un 1 u tableau des indices
+                             int tours = Jeu_Joueur.indexOf(false);
+                            Verif.set(tours, true);
+            
                             break;
+                        }
+
                     }
+                    System.out.println(Arrays.toString(tabCoul2));
                 }
-           }
-       }else {
-            System.out.println("Le tableau indice de la forme/n" + Indice);
-            System.out.println(Verif);
-                
-           continue;// si pas même couleur on passe à la case d'apres 
-           // et tableau d'indice reste null
-     //  }
-           
-       }
-        Verif.add(true);// une fois la verif de la première case faite la valeur passe à true
-} colencours+=4;
-    System.out.println("Le tableau indice de la forme/n" + Indice);
-    System.out.println(Verif);
+            } else {
+
+                Verif.add(true);
+
+                continue;// si pas même couleur on passe à la case d'apres 
+                // et tableau d'indice reste null
+                //  }
+
+            }
+
+        }
+        colencours += 4;
+        System.out.println("Le tableau indice de la forme\n" + Indice);
+        System.out.println(Verif);
                 
     return Indice;// on renvoit le tableau des indices 
    // on peut rajouter une boucle qui verifie que toutes les cases de l'ordi on bien été comparée        
@@ -211,6 +220,14 @@ public class Grille_principale {
     
         
     }
+    
+    
+     public void LigneEnCours ( ) {
+        
+        
+        
+    }
+    
     
 }
 
