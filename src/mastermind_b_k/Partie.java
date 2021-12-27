@@ -14,10 +14,11 @@ import java.util.Scanner;
 public class Partie {
     
     Grille_principale obj1=new Grille_principale();
+    int num;
    
     
     Partie(){
-       
+       num=-1;
     }
     
     
@@ -39,11 +40,13 @@ public class Partie {
             Jeu_Joueur.add(obj1.creation_Jeu_Joueur(choixcolor));
         }
         //Imaginons on fait un test que en utilisant le premier niveau(donc première ligne) alors :
-        int line=0;
+        int line=LigneEnCours();
+        //int line=obj.cotinu
         System.out.print(Jeu_Joueur.subList(line , line+4));
         //Ci dessus on print que les éléments du Jeu_Joueur du niveau auquel on se situe (ici niveau1 donc ligne 0)
-
+        
         obj1.analyse_Jeu_Joueur(line);
+        System.out.print(obj1.analyse_Jeu_Joueur(line).subList(line, line+4)); //verifier si ca marche
         // a cet emplacement nécessaire de rajouter une fonction qui peremet de modifier l'emplacement des pions( aprés la boucle for)
         
         //lancement de la grille indice --> analyse de nos différents pions qu'on a placé
@@ -51,5 +54,9 @@ public class Partie {
         //appel de la méthode analyse de Jeu_Joueur
            
     
+    }
+    public int LigneEnCours(){
+        num+=1;
+        return num;
     }
 }
