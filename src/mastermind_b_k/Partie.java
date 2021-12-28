@@ -14,11 +14,12 @@ import java.util.Scanner;
 public class Partie {
     
     Grille_principale obj1=new Grille_principale();
-    //int num;
-   
+    ArrayList<Integer> Indice = new ArrayList<>();
+    
     
     Partie(){
-       //num=-1;
+        
+       
     }
     
     
@@ -27,7 +28,7 @@ public class Partie {
         obj1.combinaisonaléatoire();
         
         ArrayList<String> Jeu_Joueur=new ArrayList<String>();
-        for (int line=0;line<12; line++){
+        for (int ligne=0;ligne<12; ligne++){
                 for (int i=0; i<4 ; i++){
                     System.out.println("Choississez une couleur a placer"); 
                     System.out.println(" 1) Red \n 2) Pink \n 3) Green \n 4) Yellow \n 5) Orange \n 6) Blue");
@@ -41,25 +42,17 @@ public class Partie {
                     Jeu_Joueur.add(obj1.creation_Jeu_Joueur(choixcolor));
                 }
 
-                //Imaginons on fait un test que en utilisant le premier niveau(donc première ligne) alors :
-                //int line=LigneEnCours();
-                System.out.println("ligne en cours " + line);
-                System.out.print(Jeu_Joueur.subList(line , line+4));
-                //obj1.analyse_Jeu_Joueur(line);
-
-                System.out.print(obj1.analyse_Jeu_Joueur(line).subList(line, line+4)); //verifier si ca marche
-                // a cet emplacement nécessaire de rajouter une fonction qui peremet de modifier l'emplacement des pions( aprés la boucle for)
-
-                //lancement de la grille indice --> analyse de nos différents pions qu'on a placé
-                //créer un compteur qui permet de savoir a quelle niveau/ligne ou on se situe
+                System.out.println("ligne en cours " + ligne);
+                System.out.print(Jeu_Joueur.subList(ligne , ligne+4));
+                
                 //appel de la méthode analyse de Jeu_Joueur
-        }   
-           
-    
+                //lancement de la grille indice --> analyse de nos différents pions qu'on a placé
+                if (obj1.analyse_Jeu_Joueur(ligne)==true){
+                    break;
+                }
+               
+          
+        }  
     }
-    /*public int LigneEnCours(){
-        num+=1;
-        return num;
-    }
-*/
+   
 }
